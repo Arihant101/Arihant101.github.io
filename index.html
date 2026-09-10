@@ -3,15 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arihant Jain - Cybersecurity Analytics Student</title>
+<title>Arihant Jain — Cybersecurity Analytics Student</title>
 <meta name="description" content="Portfolio of Arihant Jain, Cybersecurity Analytics student at Penn State University.">
+<link rel="canonical" href="https://arihant101.github.io/">
+<meta property="og:title" content="Arihant Jain — Cybersecurity Analytics Student">
+<meta property="og:description" content="Portfolio of Arihant Jain, Cybersecurity Analytics student at Penn State University.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arihant101.github.io/">
+<meta name="theme-color" content="#0A0E14">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230A0E14'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='%23FF9F1C' font-family='monospace'%3E%3E_%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0A0E14;
-    --panel:#808080;
+    --panel:#222222;
     --line:#232833;
     --text:#E8E6E0;
     --dim:#8B93A7;
@@ -31,11 +38,14 @@
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
-  a{color:var(--accent2); text-decoration:none;}
-  a:hover{text-decoration:underline;}
+  a{color:var(--accent2); text-decoration:underline; text-underline-offset:3px;}
+  nav a, .brand{text-decoration:none;}
   a:focus-visible, button:focus-visible{
     outline:2px solid var(--accent);
     outline-offset:3px;
+  }
+  @media (prefers-contrast: more){
+    :root{ --dim:#B7BECC; }
   }
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
 
@@ -56,7 +66,7 @@
   nav a:hover{color:var(--text); text-decoration:none;}
 
   main{padding-top:56px;}
-  section{padding-bottom:80px;}
+  section{padding-bottom:clamp(48px, 8vw, 80px); scroll-margin-top:90px;}
   h2{
     font-family:var(--mono);
     font-size:15px;
@@ -107,8 +117,24 @@
   .contact-line{
     display:flex; flex-wrap:wrap; gap:16px;
     font-family:var(--mono); font-size:13px;
-    margin:0 0 24px 0;
+    margin:0 0 20px 0;
   }
+  .status-line{
+    font-family:var(--mono); font-size:13px; color:var(--accent2);
+    margin:0 0 20px 0;
+  }
+  .cta-row{display:flex; flex-wrap:wrap; gap:12px;}
+  .button{
+    display:inline-block;
+    font-family:var(--mono); font-size:13px; text-decoration:none;
+    padding:9px 16px; border-radius:6px;
+    border:1px solid var(--accent);
+    color:var(--bg); background:var(--accent);
+  }
+  .button-secondary{
+    background:transparent; color:var(--text); border-color:var(--line);
+  }
+  .button:hover, .button-secondary:hover{text-decoration:none; opacity:0.85;}
   .cursor{
     display:inline-block; width:8px; height:15px;
     background:var(--accent);
@@ -154,7 +180,6 @@
     position:relative;
     padding:20px 0 20px 24px;
     border-left:2px solid var(--line);
-    opacity:0.55;
   }
   .project + .project{border-top:1px solid var(--line);}
   .project::before{
@@ -163,7 +188,7 @@
     width:10px; height:10px; border-radius:50%;
     background:var(--accent);
   }
-  .project h3{margin:0 0 6px 0; font-size:17px; color:var(--dim);}
+  .project h3{margin:0 0 6px 0; font-size:17px;}
   .project .stack{
     font-family:var(--mono);
     font-size:12px;
@@ -220,13 +245,20 @@
     .terminal-body{padding:22px 18px 26px;}
     .contact-list .label{width:64px;}
   }
+
+  @media print{
+    header, .cta-row, footer{display:none;}
+    body{background:#fff; color:#111;}
+    a{color:#111; text-decoration:underline;}
+    .terminal, .project{border-color:#999;}
+  }
 </style>
 </head>
 <body>
 
 <header>
   <nav class="wrap" aria-label="Primary">
-    <span class="brand">arihant.jain</span>
+    <a class="brand" href="#hero">arihant.jain</a>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#education">Education</a></li>
@@ -248,26 +280,33 @@
         <p class="prompt"><span class="op">$</span> whoami</p>
         <h1>Arihant Jain</h1>
         <p class="role">Cybersecurity Analytics Student, <span>Penn State University</span></p>
+        <p class="prompt"><span class="op">$</span> cat status.txt</p>
+        <p class="status-line">building a foundation in cybersecurity, one project at a time</p>
         <p class="prompt"><span class="op">$</span> cat contact.txt</p>
         <p class="contact-line">
           <a href="mailto:ari07jain@gmail.com">ari07jain@gmail.com</a>
-          <a href="https://github.com/Arihant101">github.com/Arihant101</a>
+          <a href="https://github.com/Arihant101" target="_blank" rel="noopener noreferrer" aria-label="Arihant Jain on GitHub">github.com/Arihant101</a>
         </p>
         <p class="prompt"><span class="op">$</span> <span class="cursor" aria-hidden="true"></span></p>
+        <div class="cta-row">
+          <a class="button" href="#projects">View projects</a>
+          <a class="button button-secondary" href="#contact">Email me</a>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="about">
     <h2>about</h2>
-    <p>Cybersecurity Analytics student at Penn State University, expected graduation 2029. Eagle Scout with experience leading teams as a Patrol Leader in Scouting America, and customer-facing experience in retail at Five Below.</p>
+    <p>Cybersecurity Analytics student at Penn State University, expected graduation 2029. My Goal is to gain hands-on experience in cybersecurity in penetration-testing and red teaming. </p>
+    <p>Eagle Scout with experience leading teams as a Patrol Leader in Scouting America, and customer-facing experience in retail at Five Below.</p>
   </section>
 
   <section id="education">
     <h2>education</h2>
     <div class="edu">
-      <h3>Pennsylvania State University</h3>
-      <p class="meta">B.S. Cybersecurity Analytics - Estimated Graduation 2029 - University Park, PA</p>
+      <h3><a href="https://www.psu.edu/" target="_blank" rel="noopener noreferrer">Pennsylvania State University</a></h3>
+      <p class="meta">B.S. Cybersecurity Analytics · Expected 2029 · University Park, PA</p>
     </div>
   </section>
 
@@ -275,8 +314,8 @@
     <h2>experience</h2>
 
     <div class="job">
-      <h3>Patrol Leader - Boy Scouts of America (Scouting America)</h3>
-      <p class="meta">March 2024 - September 2024 · Downingtown, PA</p>
+      <h3>Patrol Leader — Scouting America</h3>
+      <p class="meta">March 2024 – September 2024 · Downingtown, PA</p>
       <ul>
         <li>Led a team of scouts, setting goals and ensuring project completion.</li>
         <li>Planned and executed troop activities, including camping trips and community service projects.</li>
@@ -286,8 +325,8 @@
     </div>
 
     <div class="job">
-      <h3>Sales Associate - Five Below</h3>
-      <p class="meta">September 2024 - March 2025 · Downingtown, PA</p>
+      <h3>Sales Associate — Five Below</h3>
+      <p class="meta">September 2024 – March 2025 · Downingtown, PA</p>
       <ul>
         <li>Assisted customers with product selection and purchases, enhancing shopping experience and driving sales.</li>
         <li>Operated POS system, handled cash and card transactions.</li>
@@ -302,8 +341,8 @@
 
     <div class="project">
       <h3>Homelab Project</h3>
-      <p class="stack">Personal Homelab setup with Docker</p>
-      <p class="desc">I setup a personal homelab environment using Docker containers, Tailscale, and a reverse proxy. </p>
+      <p class="stack">Docker · Tailscale · reverse proxy</p>
+      <p class="desc">Personal homelab environment built with Docker containers, Tailscale for secure remote access, and a reverse proxy for routing services.</p>
     </div>
   </section>
 
@@ -336,28 +375,36 @@
 
     <div class="award">
       <h3>Eagle Scout Rank</h3>
-      <p class="meta">Scouting America - 2018 - 2025</p>
+      <p class="meta">Scouting America — 2018 – 2025</p>
     </div>
 
     <div class="award">
-      <h3>Vexmen Robotics Nationals Qualifier</h3>
-      <p class="meta">2019 - 2020 - canceled due to COVID-19</p>
+      <h3>VEX Robotics Nationals Qualifier</h3>
+      <p class="meta">2019 – 2020 · qualified for nationals; event canceled due to COVID-19</p>
     </div>
   </section>
 
   <section id="contact">
     <h2>contact</h2>
+    <p>Open to cybersecurity internships, student opportunities, and project collaboration.</p>
     <ul class="contact-list">
-      <li><span class="label">email</span> <a href="mailto:ari07jain@gmail.com">ari07jain@gmail.com</a></li>
-      <li><span class="label">github</span> <a href="https://github.com/Arihant101">github.com/Arihant101</a></li>
+      <li><span class="label">email</span> <a href="mailto:ari07jain@gmail.com">Email me</a></li>
+      <li><span class="label">github</span> <a href="https://github.com/Arihant101" target="_blank" rel="noopener noreferrer">GitHub profile</a></li>
+      <!-- Add LinkedIn + résumé links here when ready, e.g.:
+      <li><span class="label">linkedin</span> <a href="LINKEDIN_URL" target="_blank" rel="noopener noreferrer">LinkedIn profile</a></li>
+      <li><span class="label">resume</span> <a href="resume.pdf">Download résumé</a></li>
+      -->
     </ul>
   </section>
 
 </main>
 
 <footer class="wrap">
-  <p>Built with HTML/CSS. Hosted on GitHub Pages.</p>
+  <p>&copy; <span id="year"></span> Arihant Jain. Built with HTML/CSS, hosted on GitHub Pages. <a href="https://github.com/Arihant101/Arihant101.github.io" target="_blank" rel="noopener noreferrer">View source</a>.</p>
 </footer>
 
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
