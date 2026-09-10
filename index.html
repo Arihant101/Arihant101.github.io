@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arihant Jain — Cybersecurity Analytics Student</title>
+<meta name="description" content="Portfolio of Arihant Jain, Cybersecurity Analytics student at Penn State University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0E14;
+    --panel:#11151D;
+    --line:#232833;
+    --text:#E8E6E0;
+    --dim:#8B93A7;
+    --accent:#FF9F1C;
+    --accent2:#4FD1C5;
+    --mono:'JetBrains Mono', monospace;
+    --sans:'Inter', sans-serif;
+    --maxw:720px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent2); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  header{
+    position:sticky; top:0; z-index:10;
+    background:rgba(10,14,20,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:16px; padding-bottom:16px;
+    flex-wrap:wrap; gap:8px;
+  }
+  nav .brand{font-family:var(--mono); font-size:14px; color:var(--text);}
+  nav ul{list-style:none; display:flex; gap:18px; margin:0; padding:0; flex-wrap:wrap;}
+  nav a{color:var(--dim); font-size:14px;}
+  nav a:hover{color:var(--text); text-decoration:none;}
+
+  main{padding-top:56px;}
+  section{padding-bottom:80px;}
+  h2{
+    font-family:var(--mono);
+    font-size:15px;
+    font-weight:500;
+    color:var(--dim);
+    margin:0 0 28px 0;
+  }
+  h2::before{content:"// "; color:var(--accent);}
+
+  /* Hero terminal */
+  .terminal{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    margin-top:40px;
+  }
+  .terminal-bar{
+    display:flex; gap:7px;
+    padding:12px 14px;
+    border-bottom:1px solid var(--line);
+  }
+  .terminal-bar span{
+    width:10px; height:10px; border-radius:50%;
+    background:#3A404D;
+  }
+  .terminal-body{padding:28px 26px 32px;}
+  .prompt{
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--dim);
+    margin:0 0 6px 0;
+  }
+  .prompt .op{color:var(--accent2);}
+  h1{
+    font-family:var(--mono);
+    font-size:clamp(26px, 5vw, 38px);
+    margin:2px 0 8px 0;
+    color:var(--text);
+    font-weight:700;
+  }
+  .role{
+    font-size:16px;
+    color:var(--text);
+    margin:0 0 20px 0;
+  }
+  .role span{color:var(--dim);}
+  .contact-line{
+    display:flex; flex-wrap:wrap; gap:16px;
+    font-family:var(--mono); font-size:13px;
+    margin:0 0 24px 0;
+  }
+  .cursor{
+    display:inline-block; width:8px; height:15px;
+    background:var(--accent);
+    margin-left:2px;
+    animation:blink 1s steps(1) infinite;
+    vertical-align:-2px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .cursor{animation:none; opacity:1;}
+    html{scroll-behavior:auto;}
+  }
+  @keyframes blink{50%{opacity:0;}}
+
+  #about p{max-width:62ch;}
+
+  /* Education */
+  .edu h3{margin:0 0 4px 0; font-size:18px;}
+  .edu .meta{font-family:var(--mono); font-size:13px; color:var(--dim); margin:0;}
+
+  /* Experience */
+  .job{
+    position:relative;
+    padding:20px 0 20px 24px;
+    border-left:2px solid var(--line);
+  }
+  .job + .job{border-top:1px solid var(--line);}
+  .job::before{
+    content:"";
+    position:absolute; left:-6px; top:26px;
+    width:10px; height:10px; border-radius:50%;
+    background:var(--accent);
+  }
+  .job h3{margin:0 0 2px 0; font-size:17px;}
+  .job .meta{
+    font-family:var(--mono); font-size:12px; color:var(--dim);
+    margin:0 0 10px 0;
+  }
+  .job ul{margin:0; padding-left:18px;}
+  .job li{margin-bottom:6px; max-width:56ch;}
+
+  /* Projects */
+  .project{
+    position:relative;
+    padding:20px 0 20px 24px;
+    border-left:2px solid var(--line);
+    opacity:0.55;
+  }
+  .project + .project{border-top:1px solid var(--line);}
+  .project::before{
+    content:"";
+    position:absolute; left:-6px; top:26px;
+    width:10px; height:10px; border-radius:50%;
+    background:var(--accent);
+  }
+  .project h3{margin:0 0 6px 0; font-size:17px; color:var(--dim);}
+  .project .stack{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--dim);
+    margin:0 0 10px 0;
+  }
+  .project p.desc{margin:0; max-width:56ch;}
+
+  /* Skills */
+  .skill-group{
+    border-left:2px solid var(--line);
+    padding-left:18px;
+    margin-bottom:20px;
+  }
+  .skill-group h3{
+    font-family:var(--mono);
+    font-size:14px;
+    font-weight:500;
+    color:var(--accent2);
+    margin:0 0 8px 0;
+  }
+  .skill-group p{margin:0; color:var(--dim); font-size:15px;}
+
+  /* Awards */
+  .award{margin-bottom:16px;}
+  .award h3{margin:0 0 2px 0; font-size:16px;}
+  .award .meta{font-family:var(--mono); font-size:12px; color:var(--dim); margin:0;}
+
+  /* Contact */
+  .contact-list{list-style:none; padding:0; margin:0;}
+  .contact-list li{
+    display:flex; gap:14px; align-items:baseline;
+    padding:10px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .contact-list li:first-child{border-top:1px solid var(--line);}
+  .contact-list .label{
+    font-family:var(--mono); font-size:12px; color:var(--dim);
+    width:78px; flex-shrink:0;
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:24px 0 40px;
+  }
+  footer p{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--dim);
+    margin:0;
+  }
+
+  @media (max-width:600px){
+    .terminal-body{padding:22px 18px 26px;}
+    .contact-list .label{width:64px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap" aria-label="Primary">
+    <span class="brand">arihant.jain</span>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <section id="hero" aria-label="Introduction">
+    <div class="terminal">
+      <div class="terminal-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="terminal-body">
+        <p class="prompt"><span class="op">$</span> whoami</p>
+        <h1>Arihant Jain</h1>
+        <p class="role">Cybersecurity Analytics Student, <span>Penn State University</span></p>
+        <p class="prompt"><span class="op">$</span> cat contact.txt</p>
+        <p class="contact-line">
+          <a href="mailto:ari07jain@gmail.com">ari07jain@gmail.com</a>
+          <a href="https://github.com/Arihant101">github.com/Arihant101</a>
+        </p>
+        <p class="prompt"><span class="op">$</span> <span class="cursor" aria-hidden="true"></span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>about</h2>
+    <p>Cybersecurity Analytics student at Penn State University, expected graduation 2029. Eagle Scout with experience leading teams as a Patrol Leader in Scouting America, and customer-facing experience in retail at Five Below.</p>
+  </section>
+
+  <section id="education">
+    <h2>education</h2>
+    <div class="edu">
+      <h3>Pennsylvania State University</h3>
+      <p class="meta">B.S. Cybersecurity Analytics — Estimated Graduation 2029 — University Park, PA</p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>experience</h2>
+
+    <div class="job">
+      <h3>Patrol Leader — Boy Scouts of America (Scouting America)</h3>
+      <p class="meta">March 2024 – September 2024 · Downingtown, PA</p>
+      <ul>
+        <li>Led a team of scouts, setting goals and ensuring project completion.</li>
+        <li>Planned and executed troop activities, including camping trips and community service projects.</li>
+        <li>Managed budgets and resources for troop events.</li>
+        <li>Developed and taught skills to scouts, such as first aid and leadership.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <h3>Sales Associate — Five Below</h3>
+      <p class="meta">September 2024 – March 2025 · Downingtown, PA</p>
+      <ul>
+        <li>Assisted customers with product selection and purchases, enhancing shopping experience and driving sales.</li>
+        <li>Operated POS system, handled cash and card transactions.</li>
+        <li>Provided exceptional customer service, addressing inquiries and resolving issues.</li>
+        <li>Stocked shelves, organized inventory, and assisted with receiving new shipments.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>projects</h2>
+
+    <div class="project">
+      <h3>Lorem Ipsum Project</h3>
+      <p class="stack">tech stack goes here</p>
+      <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Replace this whole block with a real project.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>skills</h2>
+
+    <div class="skill-group">
+      <h3>Operating systems</h3>
+      <p>Android, Windows, Kali Linux</p>
+    </div>
+
+    <div class="skill-group">
+      <h3>Leadership</h3>
+      <p>Taking responsibility voluntarily, engaging and empowering people</p>
+    </div>
+
+    <div class="skill-group">
+      <h3>Mobile hardware features</h3>
+      <p>Bluetooth, device, file, message/telephone, notification, storage</p>
+    </div>
+
+    <div class="skill-group">
+      <h3>Tools</h3>
+      <p>Google Workspace (Gmail, Docs, Sheets, Slides, Forms, Drive, Calendar), Microsoft Word, Microsoft Excel</p>
+    </div>
+
+    <div class="skill-group">
+      <h3>Languages</h3>
+      <p>English (native), Hindi (conversational)</p>
+    </div>
+  </section>
+
+  <section id="awards">
+    <h2>awards</h2>
+
+    <div class="award">
+      <h3>Eagle Scout Rank</h3>
+      <p class="meta">Scouting America — 2018 – 2025</p>
+    </div>
+
+    <div class="award">
+      <h3>Vexmen Robotics Nationals Qualifier</h3>
+      <p class="meta">2019 – 2020 — canceled due to COVID-19</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>contact</h2>
+    <ul class="contact-list">
+      <li><span class="label">email</span> <a href="mailto:ari07jain@gmail.com">ari07jain@gmail.com</a></li>
+      <li><span class="label">github</span> <a href="https://github.com/Arihant101">github.com/Arihant101</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <p>Built with HTML/CSS. Hosted on GitHub Pages.</p>
+</footer>
+
+</body>
+</html>
